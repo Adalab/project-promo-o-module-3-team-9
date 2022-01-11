@@ -60,7 +60,7 @@ function App() {
                       id="palette1"
                       name="palette"
                       className="js-labelPalette design__input"
-                      checked
+                      defaultChecked
                     />
 
                     <label htmlFor="palette1" className="design__label">
@@ -120,11 +120,11 @@ function App() {
               <section className="box__main fill__section js-sectionFill hidden">
                 <label className="fill__label" htmlFor="name">Nombre completo</label>
                 <input className="fill__input js-name" type="text" name="name" id="name" placeholder="Ej: Sally Jill"
-                  maxlength="16" />
+                  maxLength="16" />
 
                 <label className="fill__label" htmlFor="job">Puesto</label>
                 <input className="fill__input js-occupation" type="text" name="job" id="job" placeholder="Ej: Front-end unicorn"
-                  maxlength="24" />
+                  maxLength="24" />
 
                 <label className="fill__label">Imagen de perfil</label>
                 <div className="fill__container">
