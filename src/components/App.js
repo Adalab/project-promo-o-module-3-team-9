@@ -1,8 +1,29 @@
 import "../styles/App.scss";
 import logoTeam from "../images/logo-team-undefined.svg";
 import logoAdalab from "../images/logo-adalab.png";
+import { useState } from "react";
 
 function App() {
+  const [data, setData] = useState({
+    name: "",
+    job: "",
+    email: "",
+    phone: "",
+    linkedin: "",
+    github: "",
+    photo: "",
+    palette: 1,
+  });
+
+  const handleInput = (ev) => {
+    const inputChange = ev.currentTarget.name;
+    if (inputChange === "name") {
+      setData({
+        ...data,
+        name: ev.currentTarget.value,
+      });
+    }
+  };
   return (
     <div className="App">
       <header className="header">
@@ -22,7 +43,7 @@ function App() {
               <article className="cards__article">
                 <div className="js-borderPalette cards__wrapper--palette1">
                   <h1 className="cards__title js-cardName cards__title--palette1">
-                    Nombre Apellido
+                    {data.name || "Nombre Apellidos"}
                   </h1>
                   <h2 className="cards__subtitle js-cardOccupation">
                     Front-end developer
@@ -149,7 +170,9 @@ function App() {
                 <i className="fas fa-chevron-down box__arrow js-iconFill"></i>
               </legend>
 
-              <section className="box__main fill__section js-sectionFill hidden">
+              <section
+                className="box__main fill__section js-sectionFill" /*hidden*/
+              >
                 <label className="fill__label" htmlFor="name">
                   Nombre completo
                 </label>
@@ -160,6 +183,7 @@ function App() {
                   id="name"
                   placeholder="Ej: Sally Jill"
                   maxLength="16"
+                  onChange={handleInput}
                 />
 
                 <label className="fill__label" htmlFor="job">
