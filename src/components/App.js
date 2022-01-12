@@ -22,6 +22,31 @@ function App() {
         ...data,
         name: ev.currentTarget.value,
       });
+    } else if (inputChange === "job") {
+      setData({
+        ...data,
+        job: ev.currentTarget.value,
+      });
+    } else if (inputChange === "email") {
+      setData({
+        ...data,
+        email: ev.currentTarget.value,
+      });
+    } else if (inputChange === "phone") {
+      setData({
+        ...data,
+        phone: ev.currentTarget.value,
+      });
+    } else if (inputChange === "linkedin") {
+      setData({
+        ...data,
+        linkedin: ev.currentTarget.value,
+      });
+    } else if (inputChange === "github") {
+      setData({
+        ...data,
+        github: ev.currentTarget.value,
+      });
     }
   };
   return (
@@ -46,7 +71,7 @@ function App() {
                     {data.name || "Nombre Apellidos"}
                   </h1>
                   <h2 className="cards__subtitle js-cardOccupation">
-                    Front-end developer
+                    {data.job || "Front End Developer"}
                   </h2>
                 </div>
                 <div className="cards__image js__profile-image"></div>
@@ -196,6 +221,7 @@ function App() {
                   id="job"
                   placeholder="Ej: Front-end unicorn"
                   maxLength="24"
+                  onChange={handleInput}
                 />
 
                 <label className="fill__label">Imagen de perfil</label>
@@ -225,6 +251,7 @@ function App() {
                   name="phone"
                   id="phone"
                   placeholder="Ej: 555-55-55-55"
+                  onChange={handleInput}
                 />
 
                 <label className="fill__label" htmlFor="email">
@@ -236,6 +263,7 @@ function App() {
                   name="email"
                   id="email"
                   placeholder="Ej: sally-hill@gmail.com"
+                  onChange={handleInput}
                 />
 
                 <label className="fill__label" htmlFor="linkedin">
@@ -247,6 +275,7 @@ function App() {
                   name="linkedin"
                   id="linkedin"
                   placeholder="Ej: linkedin.com/in/sally.hill"
+                  onChange={handleInput}
                 />
 
                 <label className="fill__label" htmlFor="github">
@@ -258,6 +287,7 @@ function App() {
                   name="github"
                   id="github"
                   placeholder="Ej: github.com/sally-hill"
+                  onChange={handleInput}
                 />
               </section>
             </fieldset>
