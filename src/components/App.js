@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="header">
         <div className="header__wrapper">
-          <a className="header__link" href="./" title="Team Undefined">
+          <a className="header__link" href="./#" title="Team Undefined">
             <img className="header__img" src={logoTeam} alt="Team Undefined" />
           </a>
         </div>
@@ -34,6 +34,7 @@ function App() {
                     <a
                       className="cards__link cards__link--phone js-phonePreview js-linksIcons cards__link--palette1"
                       title="Teléfono"
+                      href="./#"
                     >
                       <i className="fas fa-mobile-alt"></i>
                     </a>
@@ -42,6 +43,7 @@ function App() {
                     <a
                       className="cards__link cards__link--email js-previewEmail js-linksIcons cards__link--palette1"
                       title="Email"
+                      href="./#"
                     >
                       <i className="far fa-envelope"></i>
                     </a>
@@ -49,6 +51,7 @@ function App() {
                   <li className="cards__item">
                     <a
                       className="cards__link cards__link--linkedin js-cardLinkedin js-linksIcons cards__link--palette1"
+                      href="./#"
                       title="LinkedIn"
                       target="_blank"
                     >
@@ -59,6 +62,7 @@ function App() {
                     <a
                       className="cards__link cards__link--github js-cardGitHub js-linksIcons cards__link--palette1"
                       title="GitHub"
+                      href="./#"
                       target="_blank"
                     >
                       <i className="fab fa-github-alt"></i>
@@ -257,12 +261,15 @@ function App() {
                   <p className="share__text">La tarjeta ha sido creada:</p>
                   <a
                     className="js-shareLink share__link"
-                    href="#"
+                    href="./#"
                     target="_blank"
                   >
                     Your URL will be placed here!
                   </a>
-                  <a className="share__button share__button--twitter js-shareTwitter">
+                  <a
+                    className="share__button share__button--twitter js-shareTwitter"
+                    href="./#"
+                  >
                     <i className="fab fa-twitter"></i>Compartir en twitter
                   </a>
                 </div>
@@ -284,6 +291,7 @@ function App() {
             className="footer__link"
             href="https://adalab.es/"
             target="_blank"
+            rel="noreferrer"
             title="Adalab"
           >
             <img className="footer__img" src={logoAdalab} alt="Logo Adalab" />
