@@ -1,4 +1,6 @@
 import "../styles/App.scss";
+import logoTeam from "../images/logo-team-undefined.svg";
+import logoAdalab from "../images/logo-adalab.png";
 
 function App() {
   return (
@@ -6,11 +8,7 @@ function App() {
       <header className="header">
         <div className="header__wrapper">
           <a className="header__link" href="./" title="Team Undefined">
-            <img
-              className="header__img"
-              src="./assets/images/logo-team-undefined.svg"
-              alt="Team Undefined"
-            />
+            <img className="header__img" src={logoTeam} alt="Team Undefined" />
           </a>
         </div>
       </header>
@@ -288,11 +286,7 @@ function App() {
             target="_blank"
             title="Adalab"
           >
-            <img
-              className="footer__img"
-              src="./assets/images/logo-adalab.png"
-              alt="Logo Adalab"
-            />
+            <img className="footer__img" src={logoAdalab} alt="Logo Adalab" />
           </a>
         </div>
       </footer>
