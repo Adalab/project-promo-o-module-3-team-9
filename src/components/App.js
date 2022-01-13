@@ -12,47 +12,15 @@ function App() {
     linkedin: "",
     github: "",
     photo: "",
-    palette: 1,
+    palette: "1",
   });
 
   const handleInput = (ev) => {
     const inputChange = ev.currentTarget.name;
-setData({
-  ...data, [inputChange]: ev.currentTarget.value,
-})
-
-
-    // if (inputChange === "name") {
-    //   setData({
-    //     ...data,
-    //     name: ev.currentTarget.value,
-    //   });
-    // } else if (inputChange === "job") {
-    //   setData({
-    //     ...data,
-    //     job: ev.currentTarget.value,
-    //   });
-    // } else if (inputChange === "email") {
-    //   setData({
-    //     ...data,
-    //     email: ev.currentTarget.value,
-    //   });
-    // } else if (inputChange === "phone") {
-    //   setData({
-    //     ...data,
-    //     phone: ev.currentTarget.value,
-    //   });
-    // } else if (inputChange === "linkedin") {
-    //   setData({
-    //     ...data,
-    //     linkedin: ev.currentTarget.value,
-    //   });
-    // } else if (inputChange === "github") {
-    //   setData({
-    //     ...data,
-    //     github: ev.currentTarget.value,
-    //   });
-    // }
+    setData({
+      ...data,
+      [inputChange]: ev.currentTarget.value,
+    });
   };
   return (
     <div className="App">
@@ -139,11 +107,14 @@ setData({
                 <div className="design__wrapper">
                   <div className="design__option">
                     <input
+                      onChange={handleInput}
                       type="radio"
                       id="palette1"
                       name="palette"
+                      checked={data.palette === "1"}
+                      value="1"
                       className="js-labelPalette design__input"
-                      defaultChecked
+                      
                     />
 
                     <label htmlFor="palette1" className="design__label">
@@ -157,10 +128,13 @@ setData({
 
                   <div className="design__option">
                     <input
+                      onChange={handleInput}
                       type="radio"
                       id="palette2"
                       name="palette"
+                      value="2"
                       className="js-labelPalette design__input"
+                      checked={data.palette==="2"}
                     />
 
                     <label htmlFor="palette2" className="design__label">
@@ -174,10 +148,13 @@ setData({
 
                   <div className="design__option">
                     <input
+                      onChange={handleInput}
                       type="radio"
                       id="palette3"
                       name="palette"
                       className="js-labelPalette design__input"
+                      value="3"
+                      checked={data.palette==="3"}
                     />
 
                     <label htmlFor="palette3" className="design__label">
@@ -214,6 +191,7 @@ setData({
                   placeholder="Ej: Sally Jill"
                   maxLength="16"
                   onChange={handleInput}
+                  value={data.name}
                 />
 
                 <label className="fill__label" htmlFor="job">
@@ -227,6 +205,7 @@ setData({
                   placeholder="Ej: Front-end unicorn"
                   maxLength="24"
                   onChange={handleInput}
+                  value={data.job}
                 />
 
                 <label className="fill__label">Imagen de perfil</label>
@@ -257,6 +236,7 @@ setData({
                   id="phone"
                   placeholder="Ej: 555-55-55-55"
                   onChange={handleInput}
+                  value={data.phone}
                 />
 
                 <label className="fill__label" htmlFor="email">
@@ -269,6 +249,7 @@ setData({
                   id="email"
                   placeholder="Ej: sally-hill@gmail.com"
                   onChange={handleInput}
+                  value={data.email}
                 />
 
                 <label className="fill__label" htmlFor="linkedin">
@@ -281,6 +262,7 @@ setData({
                   id="linkedin"
                   placeholder="Ej: linkedin.com/in/sally.hill"
                   onChange={handleInput}
+                  value={data.linkedin}
                 />
 
                 <label className="fill__label" htmlFor="github">
@@ -293,6 +275,7 @@ setData({
                   id="github"
                   placeholder="Ej: github.com/sally-hill"
                   onChange={handleInput}
+                  value={data.github}
                 />
               </section>
             </fieldset>
