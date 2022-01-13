@@ -4,6 +4,8 @@ import logoAdalab from "../images/logo-adalab.png";
 import { useState } from "react";
 
 function App() {
+  const [clase, setClase] = useState("--palette1");
+
   const [data, setData] = useState({
     name: "",
     job: "",
@@ -15,6 +17,16 @@ function App() {
     palette: "1",
   });
 
+  const handlePalette = (ev) => {
+    if (ev.currentTarget.value === "1") {
+      setClase("--palette1");
+    } else if (ev.currentTarget.value === "2") {
+      setClase("--palette2");
+    } else if (ev.currentTarget.value === "3") {
+      setClase("--palette3");
+    }
+  };
+
   const handleInput = (ev) => {
     const inputChange = ev.currentTarget.name;
     setData({
@@ -22,26 +34,28 @@ function App() {
       [inputChange]: ev.currentTarget.value,
     });
   };
+
+  
   const handlerSubmit = (ev) => {
     ev.preventDefault();
-  }
+  };
 
-const handlerReset = () => {
-  setData(
-    {name: "",
-    job: "",
-    email: "",
-    phone: "",
-    linkedin: "",
-    github: "",
-    photo: "",
-    palette: "1",
-    }
-  )
+  // const changeColorPalettes = () => {
 
-}
+  // }
 
-
+  const handlerReset = () => {
+    setData({
+      name: "",
+      job: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
+      photo: "",
+      palette: "1",
+    });
+  };
 
   return (
     <div className="App">
@@ -56,12 +70,18 @@ const handlerReset = () => {
         <form className="form" action="" onSubmit={handlerSubmit}>
           <section className="cards">
             <div className="cards__container">
-              <button onClick={handlerReset} className="cards__button--reset js-resetBtn" type="reset" >
+              <button
+                onClick={handlerReset}
+                className="cards__button--reset js-resetBtn"
+                type="reset"
+              >
                 <i className="far fa-trash-alt"></i>Reset
               </button>
               <article className="cards__article">
-                <div className="js-borderPalette cards__wrapper--palette1">
-                  <h1 className="cards__title js-cardName cards__title--palette1">
+                <div className={`js-borderPalette cards__wrapper${clase}`}>
+                  <h1
+                    className={`cards__title js-cardName cards__title${clase}`}
+                  >
                     {data.name || "Nombre Apellidos"}
                   </h1>
                   <h2 className="cards__subtitle js-cardOccupation">
@@ -72,7 +92,7 @@ const handlerReset = () => {
                 <ul className="cards__contact">
                   <li className="cards__item">
                     <a
-                      className="cards__link cards__link--phone js-phonePreview js-linksIcons cards__link--palette1"
+                      className={`cards__link cards__link--phone js-phonePreview js-linksIcons cards__link${clase}`}
                       title="Teléfono"
                       href="./#"
                     >
@@ -81,7 +101,7 @@ const handlerReset = () => {
                   </li>
                   <li className="cards__item">
                     <a
-                      className="cards__link cards__link--email js-previewEmail js-linksIcons cards__link--palette1"
+                      className={`cards__link cards__link--email js-previewEmail js-linksIcons cards__link${clase}`}
                       title="Email"
                       href="./#"
                     >
@@ -90,7 +110,7 @@ const handlerReset = () => {
                   </li>
                   <li className="cards__item">
                     <a
-                      className="cards__link cards__link--linkedin js-cardLinkedin js-linksIcons cards__link--palette1"
+                      className={`cards__link cards__link--linkedin js-cardLinkedin js-linksIcons cards__link${clase}`}
                       href="./#"
                       title="LinkedIn"
                       target="_blank"
@@ -100,7 +120,7 @@ const handlerReset = () => {
                   </li>
                   <li className="cards__item">
                     <a
-                      className="cards__link cards__link--github js-cardGitHub js-linksIcons cards__link--palette1"
+                      className={`cards__link cards__link--github js-cardGitHub js-linksIcons cards__link${clase}`}
                       title="GitHub"
                       href="./#"
                       target="_blank"
@@ -129,13 +149,13 @@ const handlerReset = () => {
                   <div className="design__option">
                     <input
                       onChange={handleInput}
+                      onClick={handlePalette}
                       type="radio"
                       id="palette1"
                       name="palette"
-                      checked = {data.palette === "1"}
+                      checked={data.palette === "1"}
                       value="1"
                       className="js-labelPalette design__input"
-                      
                     />
 
                     <label htmlFor="palette1" className="design__label">
@@ -150,12 +170,13 @@ const handlerReset = () => {
                   <div className="design__option">
                     <input
                       onChange={handleInput}
+                      onClick={handlePalette}
                       type="radio"
                       id="palette2"
                       name="palette"
                       value="2"
                       className="js-labelPalette design__input"
-                      checked={data.palette==="2"}
+                      checked={data.palette === "2"}
                     />
 
                     <label htmlFor="palette2" className="design__label">
@@ -170,12 +191,13 @@ const handlerReset = () => {
                   <div className="design__option">
                     <input
                       onChange={handleInput}
+                      onClick={handlePalette}
                       type="radio"
                       id="palette3"
                       name="palette"
                       className="js-labelPalette design__input"
                       value="3"
-                      checked={data.palette==="3"}
+                      checked={data.palette === "3"}
                     />
 
                     <label htmlFor="palette3" className="design__label">
