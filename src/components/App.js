@@ -22,6 +22,27 @@ function App() {
       [inputChange]: ev.currentTarget.value,
     });
   };
+  const handlerSubmit = (ev) => {
+    ev.preventDefault();
+  }
+
+const handlerReset = () => {
+  setData(
+    {name: "",
+    job: "",
+    email: "",
+    phone: "",
+    linkedin: "",
+    github: "",
+    photo: "",
+    palette: "1",
+    }
+  )
+
+}
+
+
+
   return (
     <div className="App">
       <header className="header">
@@ -32,10 +53,10 @@ function App() {
         </div>
       </header>
       <section className="profile-cards">
-        <form className="form" action="">
+        <form className="form" action="" onSubmit={handlerSubmit}>
           <section className="cards">
             <div className="cards__container">
-              <button className="cards__button--reset js-resetBtn" type="reset">
+              <button onClick={handlerReset} className="cards__button--reset js-resetBtn" type="reset" >
                 <i className="far fa-trash-alt"></i>Reset
               </button>
               <article className="cards__article">
@@ -111,7 +132,7 @@ function App() {
                       type="radio"
                       id="palette1"
                       name="palette"
-                      checked={data.palette === "1"}
+                      checked = {data.palette === "1"}
                       value="1"
                       className="js-labelPalette design__input"
                       
