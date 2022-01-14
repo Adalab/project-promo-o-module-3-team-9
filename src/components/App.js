@@ -5,6 +5,8 @@ import { useState } from "react";
 
 function App() {
   const [clase, setClase] = useState("--palette1");
+  //const [classLegend, setClassLegend] = useState(null);
+  const classLegend = "hidden";
 
   const [data, setData] = useState({
     name: "",
@@ -16,6 +18,11 @@ function App() {
     photo: "",
     palette: "1",
   });
+
+  const handleCollapsable = (ev) => {
+    const selectedCollapsable = ev.currentTarget;
+    console.log(selectedCollapsable);
+  };
 
   const handlePalette = (ev) => {
     if (ev.currentTarget.value === "1") {
@@ -135,7 +142,10 @@ function App() {
           </section>
           <div className="form__fieldsets">
             <fieldset className="box design">
-              <legend className="js-legendDesign box__header">
+              <legend
+                className="js-legendDesign box__header"
+                onClick={handleCollapsable}
+              >
                 <div className="box__wrapper">
                   <i className="far fa-object-ungroup box__icon"></i>
                   <h2 className="box__title">Diseña</h2>
@@ -213,7 +223,10 @@ function App() {
               </section>
             </fieldset>
             <fieldset className="box fill">
-              <legend className="box__header js-legendFill">
+              <legend
+                className="box__header js-legendFill"
+                onClick={handleCollapsable}
+              >
                 <div className="box__wrapper">
                   <i className="far fa-keyboard box__icon"></i>
                   <h2 className="box__title">Rellena</h2>
@@ -222,7 +235,7 @@ function App() {
               </legend>
 
               <section
-                className="box__main fill__section js-sectionFill" /*hidden*/
+                className={`box__main fill__section js-sectionFill ${classLegend}`}
               >
                 <label className="fill__label" htmlFor="name">
                   Nombre completo
@@ -324,7 +337,10 @@ function App() {
               </section>
             </fieldset>
             <fieldset className="box share">
-              <legend className="box__header js-legendShare">
+              <legend
+                className="box__header js-legendShare"
+                onClick={handleCollapsable}
+              >
                 <div className="box__wrapper">
                   <i className="fas fa-share-alt box__icon"></i>
                   <h2 className="box__title">Comparte</h2>
