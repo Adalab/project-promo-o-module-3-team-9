@@ -134,7 +134,6 @@
       color: $color-green-dark;
       &:hover {
         background-color: $color-green-light;
-        color: $color-green-dark;
       }
     }
     &--palette2 {
@@ -142,7 +141,6 @@
       color: $color-passion-red;
       &:hover {
         background-color: $color-tomato;
-        color: $color-passion-red;
       }
     }
     &--palette3 {
@@ -150,7 +148,6 @@
       color: $color-grey-dark;
       &:hover {
         background-color: $color-grey-blue-light;
-        color: $color-grey-dark;
       }
     }
   }

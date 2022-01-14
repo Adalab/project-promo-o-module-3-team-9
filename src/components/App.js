@@ -35,7 +35,6 @@ function App() {
     });
   };
 
-  
   const handlerSubmit = (ev) => {
     ev.preventDefault();
   };
@@ -94,7 +93,7 @@ function App() {
                     <a
                       className={`cards__link cards__link--phone js-phonePreview js-linksIcons cards__link${clase}`}
                       title="Teléfono"
-                      href="./#"
+                      href={`tel:${data.phone}`}
                     >
                       <i className="fas fa-mobile-alt"></i>
                     </a>
@@ -103,7 +102,7 @@ function App() {
                     <a
                       className={`cards__link cards__link--email js-previewEmail js-linksIcons cards__link${clase}`}
                       title="Email"
-                      href="./#"
+                      href={`mailto:${data.email}`}
                     >
                       <i className="far fa-envelope"></i>
                     </a>
@@ -111,9 +110,10 @@ function App() {
                   <li className="cards__item">
                     <a
                       className={`cards__link cards__link--linkedin js-cardLinkedin js-linksIcons cards__link${clase}`}
-                      href="./#"
+                      href={`https://www.linkedin.com/in/${data.linkedin}`}
                       title="LinkedIn"
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <i className="fab fa-linkedin-in"></i>
                     </a>
@@ -122,8 +122,9 @@ function App() {
                     <a
                       className={`cards__link cards__link--github js-cardGitHub js-linksIcons cards__link${clase}`}
                       title="GitHub"
-                      href="./#"
+                      href={`https://github.com/${data.github}`}
                       target="_blank"
+                      rel="noreferrer"
                     >
                       <i className="fab fa-github-alt"></i>
                     </a>
@@ -303,7 +304,7 @@ function App() {
                   type="text"
                   name="linkedin"
                   id="linkedin"
-                  placeholder="Ej: linkedin.com/in/sally.hill"
+                  placeholder="Ej: sally.hill"
                   onChange={handleInput}
                   value={data.linkedin}
                 />
@@ -316,7 +317,7 @@ function App() {
                   type="text"
                   name="github"
                   id="github"
-                  placeholder="Ej: github.com/sally-hill"
+                  placeholder="Ej: sally-hill"
                   onChange={handleInput}
                   value={data.github}
                 />
