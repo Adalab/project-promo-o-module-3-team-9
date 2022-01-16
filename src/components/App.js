@@ -19,7 +19,11 @@ function App() {
   });
 
   const handleCollapsable = (ev) => {
-    setHiddenClass(false);
+    if (!hiddenClass) {
+    setHiddenClass(true)}
+    else {
+      setHiddenClass(false)
+    }
     console.log(ev.currentTarget);
   }
 
