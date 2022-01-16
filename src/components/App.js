@@ -17,6 +17,7 @@ function App() {
 
   const handleInput = (ev) => {
     const inputChange = ev.currentTarget.name;
+<<<<<<< Updated upstream
     if (inputChange === "name") {
       setData({
         ...data,
@@ -48,6 +49,33 @@ function App() {
         github: ev.currentTarget.value,
       });
     }
+=======
+    setData({
+      ...data,
+      [inputChange]: ev.currentTarget.value,
+    });
+  };
+
+  const handlerSubmit = (ev) => {
+    ev.preventDefault();
+  };
+
+  // const changeColorPalettes = () => {
+
+  // }
+
+  const handlerReset = () => {
+    setData({
+      name: "",
+      job: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
+      photo: "",
+      palette: "1",
+    });
+>>>>>>> Stashed changes
   };
   return (
     <div className="App">
