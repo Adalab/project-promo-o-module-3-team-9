@@ -36,71 +36,10 @@ function App() {
 
   const handleInput = (ev) => {
     const inputChange = ev.currentTarget.name;
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-    if (inputChange === "name") {
-      setData({
-        ...data,
-        name: ev.currentTarget.value,
-      });
-    } else if (inputChange === "job") {
-      setData({
-        ...data,
-        job: ev.currentTarget.value,
-      });
-    } else if (inputChange === "email") {
-      setData({
-        ...data,
-        email: ev.currentTarget.value,
-      });
-    } else if (inputChange === "phone") {
-      setData({
-        ...data,
-        phone: ev.currentTarget.value,
-      });
-    } else if (inputChange === "linkedin") {
-      setData({
-        ...data,
-        linkedin: ev.currentTarget.value,
-      });
-    } else if (inputChange === "github") {
-      setData({
-        ...data,
-        github: ev.currentTarget.value,
-      });
-    }
-=======
-=======
->>>>>>> main
     setData({
       ...data,
       [inputChange]: ev.currentTarget.value,
     });
-<<<<<<< HEAD
-  };
-
-  const handlerSubmit = (ev) => {
-    ev.preventDefault();
-  };
-
-  // const changeColorPalettes = () => {
-
-  // }
-
-  const handlerReset = () => {
-    setData({
-      name: "",
-      job: "",
-      email: "",
-      phone: "",
-      linkedin: "",
-      github: "",
-      photo: "",
-      palette: "1",
-    });
->>>>>>> Stashed changes
-=======
->>>>>>> main
   };
 
   const handlerSubmit = (ev) => {
