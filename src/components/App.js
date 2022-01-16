@@ -5,8 +5,7 @@ import { useState } from "react";
 
 function App() {
   const [clase, setClase] = useState("--palette1");
-  //const [classLegend, setClassLegend] = useState(null);
-  const classLegend = "hidden";
+  const [hiddenClass, setHiddenClass] = useState(true);
 
   const [data, setData] = useState({
     name: "",
@@ -20,9 +19,9 @@ function App() {
   });
 
   const handleCollapsable = (ev) => {
-    const selectedCollapsable = ev.currentTarget;
-    console.log(selectedCollapsable);
-  };
+    setHiddenClass(false);
+    console.log(ev.currentTarget);
+  }
 
   const handlePalette = (ev) => {
     if (ev.currentTarget.value === "1") {
@@ -46,10 +45,7 @@ function App() {
     ev.preventDefault();
   };
 
-  // const changeColorPalettes = () => {
-
-  // }
-
+ 
   const handlerReset = () => {
     setData({
       name: "",
@@ -144,8 +140,7 @@ function App() {
             <fieldset className="box design">
               <legend
                 className="js-legendDesign box__header"
-                onClick={handleCollapsable}
-              >
+                onClick={handleCollapsable}>
                 <div className="box__wrapper">
                   <i className="far fa-object-ungroup box__icon"></i>
                   <h2 className="box__title">Diseña</h2>
@@ -153,7 +148,7 @@ function App() {
                 <i className="js-iconDesign fas fa-chevron-up box__arrow"></i>
               </legend>
 
-              <section className="js-sectionDesign box__main design__section">
+              <section className={`js-sectionDesign box__main design__section ${hiddenClass?null: 'hidden'}`}>
                 <p className="design__text">Colores</p>
 
                 <div className="design__wrapper">
@@ -225,8 +220,7 @@ function App() {
             <fieldset className="box fill">
               <legend
                 className="box__header js-legendFill"
-                onClick={handleCollapsable}
-              >
+                onClick={handleCollapsable}>
                 <div className="box__wrapper">
                   <i className="far fa-keyboard box__icon"></i>
                   <h2 className="box__title">Rellena</h2>
@@ -235,7 +229,7 @@ function App() {
               </legend>
 
               <section
-                className={`box__main fill__section js-sectionFill ${classLegend}`}
+                className={`box__main fill__section js-sectionFill ${hiddenClass?'hidden': null}`}
               >
                 <label className="fill__label" htmlFor="name">
                   Nombre completo
@@ -348,7 +342,7 @@ function App() {
                 <i className="fas fa-chevron-down box__arrow js-iconShare"></i>
               </legend>
 
-              <section className="box__main share__section js-sectionShare hidden">
+              <section className={`box__main share__section js-sectionShare ${hiddenClass?'hidden': null}`}>
                 <div className="share__main">
                   <button
                     className="js-shareBtn share__button share__button--disabled"
