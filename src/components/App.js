@@ -5,7 +5,12 @@ import { useState } from "react";
 
 function App() {
   const [clase, setClase] = useState("--palette1");
-  const [hiddenClass, setHiddenClass] = useState(true);
+  const [desingArrow, setDesingArrow] = useState(false);
+  const [formArrow, setFormArrow] = useState(true);
+  const [shareArrow, setShareArrow] = useState(true);
+  const [formClass, setFormClass] = useState(true);
+  const [shareClass, setShareClass] = useState(true);
+  const [desingClass, setDesingClass] = useState(false);
 
   const [data, setData] = useState({
     name: "",
@@ -18,14 +23,41 @@ function App() {
     palette: "1",
   });
 
+  // const handleChangeArrow = () => {
+  //   let selection = ev.currentTarget.id;
+  //   if (desingClass) {
+  //     setArrow("down");
+  //   } else {
+  //     setArrow("up")
+  //   }
+  //   if
+  // }
+
   const handleCollapsable = (ev) => {
-    if (!hiddenClass) {
-    setHiddenClass(true)}
-    else {
-      setHiddenClass(false)
+    let selection = ev.currentTarget.id;
+    if (selection === "desing") {
+      setDesingArrow(!desingArrow)
+      setDesingClass(!desingClass);
+      setShareClass(true);
+      setShareArrow(true);
+      setFormClass(true);
+      setFormArrow(true);
+    } else if (selection === "form") {
+      setFormClass(!formClass);
+      setFormArrow(!formArrow);
+      setDesingClass(true);
+      setDesingArrow(true);
+      setShareClass(true);
+      setShareArrow(true);
+    } else if (selection === "share") {
+      setShareClass(!shareClass);
+      setShareArrow(!shareArrow);      
+      setFormClass(true);
+      setFormArrow(true);
+      setDesingClass(true);
+      setDesingArrow(true);
     }
-    console.log(ev.currentTarget);
-  }
+  };
 
   const handlePalette = (ev) => {
     if (ev.currentTarget.value === "1") {
@@ -49,7 +81,6 @@ function App() {
     ev.preventDefault();
   };
 
- 
   const handlerReset = () => {
     setData({
       name: "",
@@ -144,15 +175,23 @@ function App() {
             <fieldset className="box design">
               <legend
                 className="js-legendDesign box__header"
-                onClick={handleCollapsable}>
+                onClick={handleCollapsable}
+                id="desing"
+              >
                 <div className="box__wrapper">
                   <i className="far fa-object-ungroup box__icon"></i>
                   <h2 className="box__title">Diseña</h2>
                 </div>
-                <i className="js-iconDesign fas fa-chevron-up box__arrow"></i>
+                <i
+                  className={`js-iconDesign fas fa-chevron-${desingArrow?"down":"up"} box__arrow`}
+                ></i>
               </legend>
 
-              <section className={`js-sectionDesign box__main design__section ${hiddenClass?null: 'hidden'}`}>
+              <section
+                className={`js-sectionDesign box__main design__section ${
+                  desingClass ? "hidden" : null
+                }`}
+              >
                 <p className="design__text">Colores</p>
 
                 <div className="design__wrapper">
@@ -224,16 +263,22 @@ function App() {
             <fieldset className="box fill">
               <legend
                 className="box__header js-legendFill"
-                onClick={handleCollapsable}>
+                onClick={handleCollapsable}
+                id="form"
+              >
                 <div className="box__wrapper">
                   <i className="far fa-keyboard box__icon"></i>
                   <h2 className="box__title">Rellena</h2>
                 </div>
-                <i className="fas fa-chevron-down box__arrow js-iconFill"></i>
+                <i
+                  className={`fas fa-chevron-${formArrow?"down":"up"} box__arrow js-iconFill`}
+                ></i>
               </legend>
 
               <section
-                className={`box__main fill__section js-sectionFill ${hiddenClass?'hidden': null}`}
+                className={`box__main fill__section js-sectionFill ${
+                  formClass ? "hidden" : null
+                }`}
               >
                 <label className="fill__label" htmlFor="name">
                   Nombre completo
@@ -338,15 +383,22 @@ function App() {
               <legend
                 className="box__header js-legendShare"
                 onClick={handleCollapsable}
+                id="share"
               >
                 <div className="box__wrapper">
                   <i className="fas fa-share-alt box__icon"></i>
                   <h2 className="box__title">Comparte</h2>
                 </div>
-                <i className="fas fa-chevron-down box__arrow js-iconShare"></i>
+                <i
+                  className={`fas fa-chevron-${shareArrow?"down":"up"} box__arrow js-iconShare`}
+                ></i>
               </legend>
 
-              <section className={`box__main share__section js-sectionShare ${hiddenClass?'hidden': null}`}>
+              <section
+                className={`box__main share__section js-sectionShare ${
+                  shareClass ? "hidden" : null
+                }`}
+              >
                 <div className="share__main">
                   <button
                     className="js-shareBtn share__button share__button--disabled"
