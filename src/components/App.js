@@ -23,16 +23,6 @@ function App() {
     palette: "1",
   });
 
-  // const handleChangeArrow = () => {
-  //   let selection = ev.currentTarget.id;
-  //   if (desingClass) {
-  //     setArrow("down");
-  //   } else {
-  //     setArrow("up")
-  //   }
-  //   if
-  // }
-
   const handleCollapsable = (ev) => {
     let selection = ev.currentTarget.id;
     if (selection === "desing") {
