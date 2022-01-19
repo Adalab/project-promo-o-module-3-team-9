@@ -82,6 +82,7 @@ function App() {
       photo: "",
       palette: "1",
     });
+    setClase("--palette1");
   };
 
   return (
