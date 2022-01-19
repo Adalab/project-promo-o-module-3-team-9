@@ -1,8 +1,8 @@
 import "../styles/App.scss";
-import logoAdalab from "../images/logo-adalab.png";
 import { useState } from "react";
 import Header from "./Header";
 import Form from "./Form";
+import Footer from "./Footer";
 
 function App() {
   const [clase, setClase] = useState("--palette1");
@@ -89,43 +89,30 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <section className='profile-cards'>
-        <Form
-          handlerSubmit={handlerSubmit}
-          handlerReset={handlerReset}
-          clase={clase}
-          name={data.name}
-          job={data.job}
-          phone={data.phone}
-          email={data.email}
-          linkedin={data.linkedin}
-          github={data.github}
-          handleCollapsable={handleCollapsable}
-          desingArrow={desingArrow}
-          desingClass={desingClass}
-          handleInput={handleInput}
-          handlePalette={handlePalette}
-          palette={data.palette}
-          formClass={formClass}
-          formArrow={formArrow}
-          shareArrow={shareArrow}
-          shareClass={shareClass}
-        />
-      </section>
-      <footer className='footer'>
-        <div className='footer__wrapper'>
-          <p className='footer__text'>Team Undefined &copy; 2021</p>
-          <a
-            className='footer__link'
-            href='https://adalab.es/'
-            target='_blank'
-            rel='noreferrer'
-            title='Adalab'
-          >
-            <img className='footer__img' src={logoAdalab} alt='Logo Adalab' />
-          </a>
-        </div>
-      </footer>
+
+      <Form
+        handlerSubmit={handlerSubmit}
+        handlerReset={handlerReset}
+        clase={clase}
+        name={data.name}
+        job={data.job}
+        phone={data.phone}
+        email={data.email}
+        linkedin={data.linkedin}
+        github={data.github}
+        handleCollapsable={handleCollapsable}
+        desingArrow={desingArrow}
+        desingClass={desingClass}
+        handleInput={handleInput}
+        handlePalette={handlePalette}
+        palette={data.palette}
+        formClass={formClass}
+        formArrow={formArrow}
+        shareArrow={shareArrow}
+        shareClass={shareClass}
+      />
+
+      <Footer />
     </div>
   );
 }

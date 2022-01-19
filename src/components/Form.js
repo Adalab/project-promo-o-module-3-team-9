@@ -2,6 +2,7 @@ import Preview from "./Preview";
 
 const Form = (props) => {
   return (
+    <section className='profile-cards'>
     <form className='form' action='' onSubmit={props.handlerSubmit}>
       <section className='cards'>
         <Preview
@@ -286,6 +287,7 @@ const Form = (props) => {
         </fieldset>
       </div>
     </form>
+    </section>
   );
 };
 
