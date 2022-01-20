@@ -7,7 +7,7 @@ const Form = (props) => {
       <section className='cards'>
         <Preview
           handlerReset={props.handlerReset}
-          clase={props.clase}
+          paletteClass={props.paletteClass}
           name={props.name}
           job={props.job}
           phone={props.phone}
@@ -46,7 +46,6 @@ const Form = (props) => {
               <div className='design__option'>
                 <input
                   onChange={props.handleInput}
-                  onClick={props.handlePalette}
                   type='radio'
                   id='palette1'
                   name='palette'
@@ -67,7 +66,6 @@ const Form = (props) => {
               <div className='design__option'>
                 <input
                   onChange={props.handleInput}
-                  onClick={props.handlePalette}
                   type='radio'
                   id='palette2'
                   name='palette'
@@ -88,7 +86,6 @@ const Form = (props) => {
               <div className='design__option'>
                 <input
                   onChange={props.handleInput}
-                  onClick={props.handlePalette}
                   type='radio'
                   id='palette3'
                   name='palette'

@@ -13,9 +13,9 @@ const Preview = (props) => {
           <i className="far fa-trash-alt"></i>Reset
         </button>
         <article className="cards__article">
-          <div className={`js-borderPalette cards__wrapper${props.clase}`}>
+          <div className={`js-borderPalette cards__wrapper${props.paletteClass}`}>
             <h1
-              className={`cards__title js-cardName cards__title${props.clase}`}
+              className={`cards__title js-cardName cards__title${props.paletteClass}`}
             >
               {props.name || "Nombre Apellidos"}
             </h1>
@@ -27,7 +27,7 @@ const Preview = (props) => {
           <ul className="cards__contact">
             <li className="cards__item">
               <a
-                className={`cards__link cards__link--phone js-phonePreview js-linksIcons cards__link${props.clase}`}
+                className={`cards__link cards__link--phone js-phonePreview js-linksIcons cards__link${props.paletteClass}`}
                 title="Teléfono"
                 href={`tel:${props.phone}`}
               >
@@ -36,7 +36,7 @@ const Preview = (props) => {
             </li>
             <li className="cards__item">
               <a
-                className={`cards__link cards__link--email js-previewEmail js-linksIcons cards__link${props.clase}`}
+                className={`cards__link cards__link--email js-previewEmail js-linksIcons cards__link${props.paletteClass}`}
                 title="Email"
                 href={`mailto:${props.email}`}
               >
@@ -45,7 +45,7 @@ const Preview = (props) => {
             </li>
             <li className="cards__item">
               <a
-                className={`cards__link cards__link--linkedin js-cardLinkedin js-linksIcons cards__link${props.clase}`}
+                className={`cards__link cards__link--linkedin js-cardLinkedin js-linksIcons cards__link${props.paletteClass}`}
                 href={`https://www.linkedin.com/in/${props.linkedin}`}
                 title="LinkedIn"
                 target="_blank"
@@ -56,7 +56,7 @@ const Preview = (props) => {
             </li>
             <li className="cards__item">
               <a
-                className={`cards__link cards__link--github js-cardGitHub js-linksIcons cards__link${props.clase}`}
+                className={`cards__link cards__link--github js-cardGitHub js-linksIcons cards__link${props.paletteClass}`}
                 title="GitHub"
                 href={`https://github.com/${props.github}`}
                 target="_blank"

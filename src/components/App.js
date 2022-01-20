@@ -6,7 +6,7 @@ import Footer from "./Footer";
 import ls from "../services/localStorage";
 
 function App() {
-  const [clase, setClase] = useState("--palette1");
+  const [paletteClass, setPaletteClass] = useState(ls.get("class", "--palette1"));
   const [desingArrow, setDesingArrow] = useState(false);
   const [formArrow, setFormArrow] = useState(true);
   const [shareArrow, setShareArrow] = useState(true);
@@ -26,9 +26,10 @@ function App() {
   }));
 
   useEffect(() => {
-    ls.get("data", data);
     ls.set("data", data);
-  }, [data]);
+    ls.set("class", paletteClass);
+  }, [data, paletteClass]);
+
 
   const handleCollapsable = (ev) => {
     let selection = ev.currentTarget.id;
@@ -56,18 +57,16 @@ function App() {
     }
   };
 
-  const handlePalette = (ev) => {
-    if (ev.currentTarget.value === "1") {
-      setClase("--palette1");
-    } else if (ev.currentTarget.value === "2") {
-      setClase("--palette2");
-    } else if (ev.currentTarget.value === "3") {
-      setClase("--palette3");
-    }
-  };
-
   const handleInput = (ev) => {
     const inputChange = ev.currentTarget.name;
+    if (inputChange === "palette") {
+     if (ev.currentTarget.value === "1") {
+      setPaletteClass("--palette1");
+    } else if (ev.currentTarget.value === "2") {
+      setPaletteClass("--palette2");
+    } else if (ev.currentTarget.value === "3") {
+      setPaletteClass("--palette3");
+    }};
     setData({
       ...data,
       [inputChange]: ev.currentTarget.value,
@@ -89,7 +88,7 @@ function App() {
       photo: "",
       palette: "1",
     });
-    setClase("--palette1");
+    setPaletteClass("--palette1");
   };
 
   return (
@@ -99,7 +98,7 @@ function App() {
       <Form
         handlerSubmit={handlerSubmit}
         handlerReset={handlerReset}
-        clase={clase}
+        paletteClass={paletteClass}
         name={data.name}
         job={data.job}
         phone={data.phone}
@@ -110,7 +109,6 @@ function App() {
         desingArrow={desingArrow}
         desingClass={desingClass}
         handleInput={handleInput}
-        handlePalette={handlePalette}
         palette={data.palette}
         formClass={formClass}
         formArrow={formArrow}
