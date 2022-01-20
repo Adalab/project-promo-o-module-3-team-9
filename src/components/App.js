@@ -1,8 +1,9 @@
 import "../styles/App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import Form from "./Form";
 import Footer from "./Footer";
+import ls from "../services/localStorage";
 
 function App() {
   const [clase, setClase] = useState("--palette1");
@@ -13,7 +14,7 @@ function App() {
   const [shareClass, setShareClass] = useState(true);
   const [desingClass, setDesingClass] = useState(false);
 
-  const [data, setData] = useState({
+  const [data, setData] = useState(ls.get("data",  {
     name: "",
     job: "",
     email: "",
@@ -22,7 +23,12 @@ function App() {
     github: "",
     photo: "",
     palette: "1",
-  });
+  }));
+
+  useEffect(() => {
+    ls.get("data", data);
+    ls.set("data", data);
+  }, [data]);
 
   const handleCollapsable = (ev) => {
     let selection = ev.currentTarget.id;
