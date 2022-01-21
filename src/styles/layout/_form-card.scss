@@ -44,7 +44,7 @@
   }
   &__article {
     width: 240px;
-    height: 326px;
+    height: 100%;
     background-color: $color-light;
     margin-top: 20px;
     border-radius: 2px;
@@ -71,9 +71,9 @@
     margin-top: 20px;
     margin-right: 20px;
     overflow: hidden;
-    height: 20px;
+    height: 100%;
     text-transform: capitalize;
-    white-space: nowrap;
+
     &--palette1 {
       color: $color-green-dark;
     }
@@ -93,9 +93,9 @@
     margin-bottom: 10px;
     margin-right: 20px;
     overflow: hidden;
-    height: 20px;
+    height: 100%;
     text-transform: capitalize;
-    white-space: nowrap;
+
     &--palette1 {
       color: $color-green-dark;
     }
