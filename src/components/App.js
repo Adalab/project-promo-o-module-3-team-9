@@ -1,12 +1,19 @@
 import "../styles/App.scss";
 import { useState, useEffect } from "react";
+//Router
+import { Link, Switch, Route } from "react-router-dom";
+
+// Components
 import Header from "./Header";
+import Landing from "./Landing";
 import Form from "./Form";
 import Footer from "./Footer";
 import ls from "../services/localStorage";
 
 function App() {
-  const [paletteClass, setPaletteClass] = useState(ls.get("class", "--palette1"));
+  const [paletteClass, setPaletteClass] = useState(
+    ls.get("class", "--palette1")
+  );
   const [desingArrow, setDesingArrow] = useState(false);
   const [formArrow, setFormArrow] = useState(true);
   const [shareArrow, setShareArrow] = useState(true);
@@ -14,22 +21,23 @@ function App() {
   const [shareClass, setShareClass] = useState(true);
   const [desingClass, setDesingClass] = useState(false);
 
-  const [data, setData] = useState(ls.get("data",  {
-    name: "",
-    job: "",
-    email: "",
-    phone: "",
-    linkedin: "",
-    github: "",
-    photo: "",
-    palette: "1",
-  }));
+  const [data, setData] = useState(
+    ls.get("data", {
+      name: "",
+      job: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
+      photo: "",
+      palette: "1",
+    })
+  );
 
   useEffect(() => {
     ls.set("data", data);
     ls.set("class", paletteClass);
   }, [data, paletteClass]);
-
 
   const handleCollapsable = (ev) => {
     let selection = ev.currentTarget.id;
@@ -60,13 +68,14 @@ function App() {
   const handleInput = (ev) => {
     const inputChange = ev.currentTarget.name;
     if (inputChange === "palette") {
-     if (ev.currentTarget.value === "1") {
-      setPaletteClass("--palette1");
-    } else if (ev.currentTarget.value === "2") {
-      setPaletteClass("--palette2");
-    } else if (ev.currentTarget.value === "3") {
-      setPaletteClass("--palette3");
-    }};
+      if (ev.currentTarget.value === "1") {
+        setPaletteClass("--palette1");
+      } else if (ev.currentTarget.value === "2") {
+        setPaletteClass("--palette2");
+      } else if (ev.currentTarget.value === "3") {
+        setPaletteClass("--palette3");
+      }
+    }
     setData({
       ...data,
       [inputChange]: ev.currentTarget.value,
@@ -92,30 +101,35 @@ function App() {
   };
 
   return (
-    <div className='App'>
-      <Header />
-
-      <Form
-        handlerSubmit={handlerSubmit}
-        handlerReset={handlerReset}
-        paletteClass={paletteClass}
-        name={data.name}
-        job={data.job}
-        phone={data.phone}
-        email={data.email}
-        linkedin={data.linkedin}
-        github={data.github}
-        handleCollapsable={handleCollapsable}
-        desingArrow={desingArrow}
-        desingClass={desingClass}
-        handleInput={handleInput}
-        palette={data.palette}
-        formClass={formClass}
-        formArrow={formArrow}
-        shareArrow={shareArrow}
-        shareClass={shareClass}
-      />
-
+    <div className="App">
+      <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route exact path="/create-preview-card">
+        <Header />
+        <Form
+          handlerSubmit={handlerSubmit}
+          handlerReset={handlerReset}
+          paletteClass={paletteClass}
+          name={data.name}
+          job={data.job}
+          phone={data.phone}
+          email={data.email}
+          linkedin={data.linkedin}
+          github={data.github}
+          handleCollapsable={handleCollapsable}
+          desingArrow={desingArrow}
+          desingClass={desingClass}
+          handleInput={handleInput}
+          palette={data.palette}
+          formClass={formClass}
+          formArrow={formArrow}
+          shareArrow={shareArrow}
+          shareClass={shareClass}
+        />
+        </Route>
+      </Switch>
       <Footer />
     </div>
   );
