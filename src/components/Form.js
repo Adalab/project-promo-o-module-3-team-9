@@ -1,6 +1,11 @@
 import Preview from "./Preview";
+import ImageReader from "./ImageReader";
 
 const Form = (props) => {
+  const handleImage = (imageData) => {
+    console.log(imageData);
+  };
+
   return (
     <section className="profile-cards">
       <form className="form" action="" onSubmit={props.handlerSubmit}>
@@ -155,20 +160,8 @@ const Form = (props) => {
 
               <label className="fill__label">Imagen de perfil</label>
               <div className="fill__container">
-                <label
-                  className="fill__button js__profile-trigger"
-                  htmlFor="img-selector"
-                  type="button"
-                >
-                  Añadir imagen
-                </label>
-                <input
-                  type="file"
-                  name="img-selector"
-                  id="img-selector"
-                  className="js__profile-upload-btn hidden"
-                />
-                <div className="fill__image js__profile-preview"></div>
+                <ImageReader handleImage={handleImage} />{" "}
+               
               </div>
 
               <label className="fill__label" htmlFor="phone">
