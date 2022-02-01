@@ -1,7 +1,7 @@
 import "../styles/App.scss";
 import { useState, useEffect } from "react";
 //Router
-import { Link, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 // Components
 import Header from "./Header";
