@@ -20,6 +20,7 @@ function App() {
   const [formClass, setFormClass] = useState(true);
   const [shareClass, setShareClass] = useState(true);
   const [desingClass, setDesingClass] = useState(false);
+  const [imgInfo, setImgInfo] = useState("");
 
   const [data, setData] = useState(
     ls.get("data", {
@@ -100,6 +101,10 @@ function App() {
     setPaletteClass("--palette1");
   };
 
+  const handleImage = (data) => {
+    setImgInfo(data);
+  };
+
   return (
     <div className="App">
       <Switch>
@@ -107,27 +112,29 @@ function App() {
           <Landing />
         </Route>
         <Route exact path="/create-preview-card">
-        <Header />
-        <Form
-          handlerSubmit={handlerSubmit}
-          handlerReset={handlerReset}
-          paletteClass={paletteClass}
-          name={data.name}
-          job={data.job}
-          phone={data.phone}
-          email={data.email}
-          linkedin={data.linkedin}
-          github={data.github}
-          handleCollapsable={handleCollapsable}
-          desingArrow={desingArrow}
-          desingClass={desingClass}
-          handleInput={handleInput}
-          palette={data.palette}
-          formClass={formClass}
-          formArrow={formArrow}
-          shareArrow={shareArrow}
-          shareClass={shareClass}
-        />
+          <Header />
+          <Form
+            handlerSubmit={handlerSubmit}
+            handlerReset={handlerReset}
+            paletteClass={paletteClass}
+            name={data.name}
+            job={data.job}
+            phone={data.phone}
+            email={data.email}
+            linkedin={data.linkedin}
+            github={data.github}
+            handleCollapsable={handleCollapsable}
+            desingArrow={desingArrow}
+            desingClass={desingClass}
+            handleInput={handleInput}
+            palette={data.palette}
+            formClass={formClass}
+            formArrow={formArrow}
+            shareArrow={shareArrow}
+            shareClass={shareClass}
+            imgInfo={imgInfo}
+            handleImage={handleImage}
+          />
         </Route>
       </Switch>
       <Footer />

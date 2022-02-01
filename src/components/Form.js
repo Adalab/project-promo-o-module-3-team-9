@@ -3,7 +3,7 @@ import ImageReader from "./ImageReader";
 
 const Form = (props) => {
   const handleImage = (imageData) => {
-    console.log(imageData);
+    props.handleImage(imageData);
   };
 
   return (
@@ -19,6 +19,7 @@ const Form = (props) => {
             email={props.email}
             linkedin={props.linkedin}
             github={props.github}
+            imgInfo={props.imgInfo}
           />
         </section>
 
@@ -161,7 +162,10 @@ const Form = (props) => {
               <label className="fill__label">Imagen de perfil</label>
               <div className="fill__container">
                 <ImageReader handleImage={handleImage} />{" "}
-               
+                <div
+                  className="fill__image js__profile-preview"
+                  style={{ backgroundImage: `url(${props.imgInfo})` }}
+                ></div>
               </div>
 
               <label className="fill__label" htmlFor="phone">
