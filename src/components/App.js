@@ -1,28 +1,44 @@
 import "../styles/App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+//Router
+import { Switch, Route } from "react-router-dom";
+
+// Components
 import Header from "./Header";
+import Landing from "./Landing";
 import Form from "./Form";
 import Footer from "./Footer";
+import ls from "../services/localStorage";
 
 function App() {
-  const [clase, setClase] = useState("--palette1");
+  const [paletteClass, setPaletteClass] = useState(
+    ls.get("class", "--palette1")
+  );
   const [desingArrow, setDesingArrow] = useState(false);
   const [formArrow, setFormArrow] = useState(true);
   const [shareArrow, setShareArrow] = useState(true);
   const [formClass, setFormClass] = useState(true);
   const [shareClass, setShareClass] = useState(true);
   const [desingClass, setDesingClass] = useState(false);
+  const [imgInfo, setImgInfo] = useState("");
 
-  const [data, setData] = useState({
-    name: "",
-    job: "",
-    email: "",
-    phone: "",
-    linkedin: "",
-    github: "",
-    photo: "",
-    palette: "1",
-  });
+  const [data, setData] = useState(
+    ls.get("data", {
+      name: "",
+      job: "",
+      email: "",
+      phone: "",
+      linkedin: "",
+      github: "",
+      photo: "",
+      palette: "1",
+    })
+  );
+
+  useEffect(() => {
+    ls.set("data", data);
+    ls.set("class", paletteClass);
+  }, [data, paletteClass]);
 
   const handleCollapsable = (ev) => {
     let selection = ev.currentTarget.id;
@@ -50,18 +66,17 @@ function App() {
     }
   };
 
-  const handlePalette = (ev) => {
-    if (ev.currentTarget.value === "1") {
-      setClase("--palette1");
-    } else if (ev.currentTarget.value === "2") {
-      setClase("--palette2");
-    } else if (ev.currentTarget.value === "3") {
-      setClase("--palette3");
-    }
-  };
-
   const handleInput = (ev) => {
     const inputChange = ev.currentTarget.name;
+    if (inputChange === "palette") {
+      if (ev.currentTarget.value === "1") {
+        setPaletteClass("--palette1");
+      } else if (ev.currentTarget.value === "2") {
+        setPaletteClass("--palette2");
+      } else if (ev.currentTarget.value === "3") {
+        setPaletteClass("--palette3");
+      }
+    }
     setData({
       ...data,
       [inputChange]: ev.currentTarget.value,
@@ -83,35 +98,45 @@ function App() {
       photo: "",
       palette: "1",
     });
-    setClase("--palette1");
+    setPaletteClass("--palette1");
+  };
+
+  const handleImage = (data) => {
+    setImgInfo(data);
   };
 
   return (
-    <div className='App'>
-      <Header />
-
-      <Form
-        handlerSubmit={handlerSubmit}
-        handlerReset={handlerReset}
-        clase={clase}
-        name={data.name}
-        job={data.job}
-        phone={data.phone}
-        email={data.email}
-        linkedin={data.linkedin}
-        github={data.github}
-        handleCollapsable={handleCollapsable}
-        desingArrow={desingArrow}
-        desingClass={desingClass}
-        handleInput={handleInput}
-        handlePalette={handlePalette}
-        palette={data.palette}
-        formClass={formClass}
-        formArrow={formArrow}
-        shareArrow={shareArrow}
-        shareClass={shareClass}
-      />
-
+    <div className="App">
+      <Switch>
+        <Route exact path="/">
+          <Landing />
+        </Route>
+        <Route exact path="/create-preview-card">
+          <Header />
+          <Form
+            handlerSubmit={handlerSubmit}
+            handlerReset={handlerReset}
+            paletteClass={paletteClass}
+            name={data.name}
+            job={data.job}
+            phone={data.phone}
+            email={data.email}
+            linkedin={data.linkedin}
+            github={data.github}
+            handleCollapsable={handleCollapsable}
+            desingArrow={desingArrow}
+            desingClass={desingClass}
+            handleInput={handleInput}
+            palette={data.palette}
+            formClass={formClass}
+            formArrow={formArrow}
+            shareArrow={shareArrow}
+            shareClass={shareClass}
+            imgInfo={imgInfo}
+            handleImage={handleImage}
+          />
+        </Route>
+      </Switch>
       <Footer />
     </div>
   );
